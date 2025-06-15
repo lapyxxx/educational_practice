@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Команда | Киберполигон</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background: #181828; color: #f0f0f0; margin: 0; line-height: 1.7; text-align: center; }
+        .container { max-width: 950px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        .page-title { text-align: center; margin-bottom: 2.25em; position: relative; }
+        .page-title:after { content: ""; display: block; width: 80px; height: 3px; background: linear-gradient(90deg, #7ecfff, #8e44ad); margin: 0.5em auto 0; }
+        .page-title h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1.5em; }
+        .team-members-container { display: flex; flex-wrap: wrap; gap: 2.25em; justify-content: center; }
+        .team-member { background: #23233a; border-radius: 14px; padding: 32px 24px; min-width: 260px; max-width: 320px; flex: 1 1 260px; margin-bottom: 0; box-shadow: 0 2px 12px rgba(30,40,80,0.10); text-align: center; }
+        .member-info h3 { margin: 0 auto 1em; font-size: 1.15rem; text-align: center; }
+        .member-info p { margin: 0 auto 1em; color: #b0b0b0; text-align: center; }
+        .member-description p { margin: 0 auto 1em; text-align: center; }
+        .member-description ul { margin: 0 auto 1em; padding: 0; text-align: left; max-width: 90%; }
+        .member-description li { margin-bottom: 0.8em; text-align: left; padding-left: 1.5em; position: relative; list-style-type: none; }
+        .member-description li:before { content: "•"; position: absolute; left: 0; color: #7ecfff; }
+        @media (max-width: 900px) { .team-members-container { flex-direction: column; gap: 24px; } .team-member { max-width: 100%; } }
+        .solo-dev-card {
+            background: #23233a;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(30,40,80,0.18);
+            max-width: 480px;
+            margin: 48px auto 0 auto;
+            padding: 36px 32px 32px 32px;
+            color: #f0f0f0;
+        }
+        .solo-dev-card h2 {
+            color: #7ecfff;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .solo-dev-card .dev-role {
+            font-style: italic;
+            color: #aaa;
+            margin-bottom: 18px;
+            display: block;
+        }
+        .solo-dev-card .dev-desc {
+            font-style: italic;
+            color: #aaa;
+            margin-bottom: 18px;
+        }
+        .solo-dev-card ul {
+            margin: 0 0 0 18px;
+            padding: 0;
+        }
+        .solo-dev-card li {
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-background"></div>
+    <button class="menu-toggle">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header"><h2>Меню</h2></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="team.html" class="active">Команда</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer"><p>Москва 2025</p><p>Создатель: fek2019 and lapyxxx</p></div>
+    </div>
+    <div class="main-content">
+        <section class="page-title">
+            <h1 class="gradient-text">Команда</h1>
+        </section>
+        <div class="container fade-in">
+            <div class="solo-dev-card" style="display: flex; align-items: center; gap: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <div style="flex:1;min-width:0;">
+                    <h2>Феклин Роман</h2>
+                    <span class="dev-role">Разработчик сайта</span>
+                    <div class="dev-desc">В проекте отвечал за:</div>
+                    <ul>
+                        <li>Разработку современного сайта с нуля</li>
+                        <li>Дизайн и тёмное оформление</li>
+                        <li>Интерактивные элементы и анимации</li>
+                    </ul>
+                </div>
+                <!-- Фото разработчика -->
+                <img src="images/photo_2025-06-07_22-13-44.png" alt="Фото Феклин Роман" style="width:300px;max-width:100%;height:auto;border-radius:12px;box-shadow:0 4px 16px rgba(30,40,80,0.18);background:#181828;object-fit:cover;margin-top: 50px;">
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <p>Москва 2025</p>
+        <p>Создатель: fek2019 and lapyxxx</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 

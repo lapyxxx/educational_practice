@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О проекте | Киберполигон</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background: #181828; color: #f0f0f0; margin: 0; line-height: 1.7; text-align: center; }
+        .highlight { color: #7ecfff; }
+        .gradient-text { background: linear-gradient(90deg, #7ecfff, #8e44ad); -webkit-background-clip: text; color: transparent; }
+        .highlight-box { border-left: 3px solid #7ecfff; padding-left: 15px; }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 0em; background: linear-gradient(90deg, #7ecfff, #8e44ad); -webkit-background-clip: text; color: transparent; }
+        .accent-bg { background: linear-gradient(135deg, rgba(126, 207, 255, 0.1), rgba(142, 68, 173, 0.1)); padding: 2em; border-radius: 14px; margin: 2em 0; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.active { opacity: 1; transform: translateY(0); }
+        .slide-in-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .slide-in-left.active { opacity: 1; transform: translateX(0); }
+        .slide-in-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .slide-in-right.active { opacity: 1; transform: translateX(0); }
+        .zoom-in { opacity: 0; transform: scale(0.95); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .zoom-in.active { opacity: 1; transform: scale(1); }
+        .delayed-1 { transition-delay: 0.2s; }
+        .delayed-2 { transition-delay: 0.4s; }
+        .delayed-3 { transition-delay: 0.6s; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.3em; background: linear-gradient(90deg, #7ecfff, #8e44ad); -webkit-background-clip: text; color: transparent; }
+        .stat-label { font-size: 1rem; color: #b0b0b0; }
+        .stats-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; margin: 1em 0 0.5em 0; }
+        .stat-item { flex: 1; min-width: 150px; padding: 1em; }
+        .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(126, 207, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(126, 207, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(126, 207, 255, 0); }
+        }
+        .bg-accent-card { background: linear-gradient(135deg, #23233a, #2d2d4a); border-radius: 14px; padding: 2em; margin: 1.5em 0; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); }
+        .visual-divider { height: 3px; width: 80px; background: linear-gradient(90deg, #7ecfff, #8e44ad); margin: 2em auto; }
+        .page-header {
+            padding: 1.2em 0 0.5em;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(126, 207, 255, 0.06), rgba(142, 68, 173, 0.06));
+            box-shadow: none;
+            border-bottom: 1px solid #23233a;
+            margin-bottom: 3em;
+        }
+        .page-title { text-align: center; margin-bottom: 2.25em; position: relative; }
+        .page-title:after { display: none; }
+        .page-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5em;
+        }
+        .about-content { display: flex; flex-wrap: wrap; gap: 1.5em; align-items: flex-start; }
+        .about-content > div:first-child { flex: 2 1 60%; min-width: 320px; }
+        .about-content > .code-typewriter-container { flex: 1 1 40%; min-width: 260px; }
+        .about-photo { max-width: 340px; border-radius: 14px; margin: 0 auto; display: block; box-shadow: 0 2px 12px rgba(30,40,80,0.10); }
+        section { margin-bottom: 2.25em; }
+        h2 { font-size: 1.3rem; margin-bottom: 1.5em; text-align: center; }
+        h3 { font-size: 1.1rem; margin-bottom: 1.5em; text-align: center; }
+        ul { margin: 0 auto 1.5em auto; padding: 0; text-align: left; max-width: 600px; }
+        li { margin-bottom: 1em; text-align: left; padding-left: 1.5em; position: relative; list-style-type: none; }
+        li:before { content: "•"; position: absolute; left: 0; color: #7ecfff; }
+        p { margin: 0 auto 1.5em; max-width: 700px; }
+        .advantages-grid { display: flex; flex-wrap: wrap; gap: 32px; margin: 0 auto 2em; justify-content: center; }
+        .advantage-card { background: #23233a; border-radius: 14px; padding: 32px 24px; flex: 1 1 200px; min-width: 180px; box-shadow: 0 2px 12px rgba(30,40,80,0.10); text-align: center; }
+        @media (max-width: 900px) {
+            .about-content { flex-direction: column; }
+            .about-content > div:first-child, .about-content > .code-typewriter-container { flex: 1 1 100%; min-width: 0; }
+        }
+        .cyber-security-section, .cyberpolygon-section, .project-goals { text-align: left; padding: 0 20px; }
+        .cyber-security-section h2, .cyberpolygon-section h2, .project-goals h2,
+        .cyber-security-section h3, .cyberpolygon-section h3, .project-goals h3 { text-align: center; }
+        .code-typewriter-container {
+            width: 100%;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2em 0 2em 0;
+        }
+        .code-typewriter-bg {
+            background: linear-gradient(135deg, #181828 80%, #23233a 100%);
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            padding: 2em 2em 2em 2em;
+            width: 100%;
+            max-width: 900px;
+            min-height: 220px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .typewriter-code {
+            color: #7ecfff;
+            font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            margin: 0;
+            width: 100%;
+            background: none;
+        }
+        @media (max-width: 700px) {
+            .code-typewriter-bg { padding: 1em; }
+            .typewriter-code { font-size: 0.95rem; }
+        }
+        .cyber-row {
+            display: flex;
+            gap: 2.5em;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+        .cyber-col-text {
+            flex: 2 1 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .cyber-col-img {
+            flex: 1 1 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cyber-gif {
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(30,40,80,0.10);
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-background"></div>
+    <button class="menu-toggle">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header"><h2>Меню</h2></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html" class="active">О проекте</a></li>
+                <li><a href="team.html">Команда</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer"><p>Москва 2025</p><p>Создатель: fek2019 and lapyxxx</p></div>
+    </div>
+    <div class="main-content">
+        <header class="page-header">
+            <div class="page-title fade-in active">
+                <h1 class="gradient-text">О проекте</h1>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item fade-in delayed-1 active">
+                    <div class="stat-number counter" data-target="60">0</div>
+                    <div class="stat-label">Атак каждый час</div>
+                </div>
+                <div class="stat-item fade-in delayed-2 active">
+                    <div class="stat-number counter" data-target="95">0</div>
+                    <div class="stat-label">% атак по вине пользователя</div>
+                </div>
+                <div class="stat-item fade-in delayed-3 active">
+                    <div class="stat-number counter" data-target="75">0</div>
+                    <div class="stat-label">% успешных предотвращений</div>
+                </div>
+            </div>
+        </header>
+        <div class="container fade-in">
+            <div class="about-content">
+                <div>
+                    <section class="cyber-security-section" style="height:100%">
+                        <div class="cyber-row">
+                            <div class="cyber-col-text slide-in-left active">
+                                <div class="feature-icon">🔐</div>
+                                <h2>Что такое <span class="info-tooltip">кибербезопасность<span class="tooltip-text">Практика защиты систем, сетей и программ от цифровых атак.</span></span>?</h2>
+                                <p>Кибербезопасность — это практика защиты систем, сетей и программ от цифровых атак. Эти атаки обычно направлены на получение доступа к конфиденциальной информации, ее изменение или уничтожение, вымогательство денег у пользователей или нарушение нормальной работы бизнес-процессов.</p>
+                            </div>
+                            <div class="cyber-col-img slide-in-right active">
+                                <img src="images/2d79a22c6a7902c41866fe4badebe98e.gif" alt="Кибербезопасность" class="cyber-gif">
+                            </div>
+                        </div>
+                        <div class="visual-divider"></div>
+                        <h3 class="gradient-text fade-in active">Основные аспекты кибербезопасности:</h3>
+                        <div class="accent-bg fade-in active">
+                            <ul>
+                                <li><strong class="highlight">Защита информации</strong> - обеспечение конфиденциальности, целостности и доступности данных</li>
+                                <li><strong class="highlight">Сетевая безопасность</strong> - защита компьютерных сетей от вторжений</li>
+                                <li><strong class="highlight">Безопасность приложений</strong> - защита программного обеспечения от угроз</li>
+                                <li><strong class="highlight">Операционная безопасность</strong> - процессы и решения для защиты данных</li>
+                                <li><strong class="highlight">Аварийное восстановление</strong> - способы восстановления после кибератак</li>
+                                <li><strong class="highlight">Обучение пользователей</strong> - самый слабый элемент безопасности</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box zoom-in active">
+                            <p>Современные киберугрозы включают в себя фишинг, ransomware-атаки, вредоносное ПО, социальную инженерию и другие методы, которые постоянно эволюционируют. По данным исследований, каждые 39 секунд происходит хакерская атака, а 95% кибернарушений происходят по вине человеческого фактора.</p>
+                        </div>
+                    </section>
+                    <section class="cyberpolygon-section">
+                        <div class="bg-accent-card slide-in-right active">
+                            <div class="feature-icon">🛡️</div>
+                            <h2>Что такое Кибеполигон?</h2>
+                            <p>Кибеполигон — это образовательная платформа, созданная для обучения основам кибербезопасности через практические задания и симуляции реальных атак. Наш проект представляет собой виртуальный полигон, где пользователи могут:</p>
+                        </div>
+                        
+                        <div class="accent-bg zoom-in delayed-1 active">
+                            <ul>
+                                <li>Изучать типичные уязвимости информационных систем</li>
+                                <li>Практиковаться в защите от различных видов кибератак</li>
+                                <li>Анализировать реальные кейсы из мира информационной безопасности</li>
+                                <li>Развивать навыки безопасной работы в цифровой среде</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="visual-divider"></div>
+                        
+                        <h3 class="gradient-text fade-in active">Для чего нужен Кибеполигон?</h3>
+                        <p class="fade-in active">В современном цифровом мире каждый пользователь интернета сталкивается с киберугрозами. Наш проект помогает:</p>
+                        
+                        <div class="stats-container">
+                            <div class="stat-item bg-accent-card fade-in delayed-1 active">
+                                <div class="feature-icon">👨‍🎓</div>
+                                <p><strong class="highlight">Студентам</strong> - получить практические навыки в области информационной безопасности</p>
+                            </div>
+                            <div class="stat-item bg-accent-card fade-in delayed-2 active">
+                                <div class="feature-icon">👨‍💻</div>
+                                <p><strong class="highlight">ИТ-специалистам</strong> - повысить квалификацию в области защиты данных</p>
+                            </div>
+                            <div class="stat-item bg-accent-card fade-in delayed-3 active">
+                                <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                                <p><strong class="highlight">Обычным пользователям</strong> - научиться защищать свои персональные данные</p>
+                            </div>
+                            <div class="stat-item bg-accent-card fade-in delayed-3 active">
+                                <div class="feature-icon">🏢</div>
+                                <p><strong class="highlight">Компаниям</strong> - тренировать сотрудников на реалистичных сценариях атак</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box zoom-in active">
+                            <p>По статистике, 60% малых предприятий, пострадавших от кибератаки, прекращают свою деятельность в течение полугода. Кибеполигон помогает снизить эти риски через обучение и осведомленность.</p>
+                        </div>
+                    </section>
+                    <section class="project-goals">
+                        <div class="bg-accent-card slide-in-left active">
+                            <div class="feature-icon">🎯</div>
+                            <h2>Цели нашего проекта</h2>
+                            <p>Проект был разработан группой студентов разных курсов Московского Политехнического Университета в рамках предмета "Проектная деятельность". Основные цели:</p>
+                        </div>
+                        
+                        <div class="accent-bg fade-in active">
+                            <ul>
+                                <li><span class="gradient-text">Создать доступную образовательную платформу по кибербезопасности</span> <span class="counter pulse" data-target="100">0</span><span>%</span></li>
+                                <li><span class="gradient-text">Обеспечить практическое обучение через реальные сценарии</span> <span class="counter pulse" data-target="100">0</span><span>%</span></li>
+                                <li><span class="gradient-text">Повысить осведомленность о киберугрозах среди различных групп пользователей</span> <span class="counter pulse" data-target="100">0</span><span>%</span></li>
+                                <li><span class="gradient-text">Развить навыки командной работы и проект-менеджмента у создателей</span> <span class="counter pulse" data-target="100">0</span><span>%</span></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight-box zoom-in active">
+                            <p>Этот проект позволил каждому участнику не только улучшить технические навыки, но и получить бесценный опыт работы в команде над реальным продуктом.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <footer class="main-footer">
+            <p>Москва 2025</p>
+            <p>Создатель: fek2019 and lapyxxx</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Анимация счетчиков
+        const counters = document.querySelectorAll('.counter');
+        
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000; // ms
+            const steps = 100;
+            const stepTime = duration / steps;
+            const stepValue = target / steps;
+            let current = 0;
+            let step = 0;
+            
+            const updateCounter = () => {
+                current += stepValue;
+                counter.textContent = Math.round(current);
+                step++;
+                
+                if (step < steps) {
+                    setTimeout(updateCounter, stepTime);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            // Начинаем анимацию когда элемент появляется в поле зрения
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(updateCounter, 500);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(counter);
+        });
+        
+        // Анимация появления элементов при скролле
+        const animatedElements = document.querySelectorAll('.fade-in:not(.active), .slide-in-left:not(.active), .slide-in-right:not(.active), .zoom-in:not(.active)');
+        
+        const animateOnScroll = () => {
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.85) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        // Запускаем анимацию при загрузке и скролле
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Добавляем интерактивность для карточек
+        const cards = document.querySelectorAll('.bg-accent-card, .advantage-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 8px 24px rgba(30,40,80,0.15)';
+                card.style.transition = 'transform 0.3s, box-shadow 0.3s';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 2px 12px rgba(30,40,80,0.10)';
+            });
+        });
+        
+        // Добавляем эффект подсветки для кнопок и интерактивных элементов
+        const interactiveElements = document.querySelectorAll('.highlight');
+        
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.color = '#8e44ad';
+                element.style.transition = 'color 0.3s';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.color = '#7ecfff';
+            });
+        });
+    </script>
+</body>
+</html> 

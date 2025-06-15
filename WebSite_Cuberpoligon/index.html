@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Киберполигон</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background: #181828; color: #f0f0f0; margin: 0; line-height: 1.7; }
+        .hero-section { position: relative; min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 16px 60px 16px; }
+        .hero-title { font-size: 3rem; font-weight: 700; margin-bottom: 18px; background: linear-gradient(90deg, #7ecfff, #8e44ad); -webkit-background-clip: text; color: transparent; }
+        .hero-desc { font-size: 1.3rem; color: #b0b0b0; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-btn { font-size: 1.1rem; padding: 14px 36px; border-radius: 30px; background: linear-gradient(90deg, #7ecfff, #8e44ad); color: #fff; border: none; font-weight: 600; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 16px rgba(30,40,80,0.18); margin-bottom: 24px; }
+        .hero-btn:hover { background: linear-gradient(90deg, #8e44ad, #7ecfff); }
+        .hero-visual { margin-top: 24px; }
+        .hero-messages { min-height: 56px; margin-bottom: 32px; position: relative; display: block; text-align: center; width: 100%; }
+        .hero-message { position: absolute; left: 0; right: 0; margin: 0 auto; width: 100%; opacity: 0; transition: opacity 0.6s; font-size: 1.18rem; color: #fff; white-space: pre-line; pointer-events: none; text-align: center; }
+        .hero-message.active { opacity: 1; z-index: 1; transition: opacity 0.6s; }
+        .main-section { max-width: 950px; margin: 0 auto; padding: 0 16px; }
+        .main-section .main-block { background: #23233a; border-radius: 18px; padding: 40px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; margin-bottom: 56px; box-shadow: 0 2px 12px rgba(30,40,80,0.10); }
+        .main-section .main-block .main-text { flex: 2 1 340px; text-align: left; }
+        .main-section .main-block .main-text h2 { font-size: 2rem; font-weight: 700; margin-bottom: 18px; }
+        .main-section .main-block .main-text ul { margin: 0 auto 1.5em; padding: 0; text-align: left; }
+        .main-section .main-block .main-text li { margin-bottom: 0.8em; text-align: left; padding-left: 1.5em; position: relative; list-style-type: none; }
+        .main-section .main-block .main-text li:before { content: "•"; position: absolute; left: 0; color: #7ecfff; }
+        .main-section .main-block .main-img { flex: 1 1 300px; text-align: center; }
+        .main-section .main-block .main-img img { max-width: 410px; border-radius: 12px; }
+        .quiz-section, .advantages-section, .attack-section, .faq-section, .cta-section {
+            max-width: 950px;
+            margin: 0 auto 56px auto;
+            padding: 0 16px;
+        }
+        .quiz-section, .advantages-section, .attack-section, .faq-section, .cta-section {
+            margin-top: 56px;
+            margin-bottom: 56px;
+        }
+        .page-title { text-align: center; margin-bottom: 2.25em; position: relative; }
+        .page-title:after { content: ""; display: block; width: 80px; height: 3px; background: linear-gradient(90deg, #7ecfff, #8e44ad); margin: 0.5em auto 0; }
+        .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1.5em; text-align: center; position: relative; }
+        .section-title:after { content: ""; display: block; width: 80px; height: 3px; background: linear-gradient(90deg, #7ecfff, #8e44ad); margin: 0.5em auto 0; }
+        .quiz-box { background: #23233a; border-radius: 16px; padding: 32px 24px; text-align: center; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(30,40,80,0.10); }
+        .quiz-question { font-size: 1.15rem; margin-bottom: 18px; }
+        .quiz-answers { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+        .quiz-answers button { background: #35355a; color: #fff; border: none; border-radius: 8px; padding: 12px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        .quiz-answers button:hover { background: #7ecfff; color: #181828; }
+        .quiz-result { font-size: 1.1rem; color: #7ecfff; margin-top: 10px; min-height: 24px; }
+        .advantages-grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 24px; }
+        .advantage-card { background: #23233a; border-radius: 14px; padding: 32px 24px; min-width: 200px; max-width: 260px; flex: 1 1 200px; text-align: center; box-shadow: 0 2px 12px rgba(30,40,80,0.10); }
+        .advantage-icon { font-size: 2.2rem; margin-bottom: 10px; color: #7ecfff; }
+        .advantage-title { font-weight: 600; margin-bottom: 8px; }
+        .attack-section { margin-top: 56px; }
+        .attack-example {
+            background: #23233a;
+            border-radius: 16px;
+            padding: 32px 24px;
+            margin: 0 auto;
+            max-width: 950px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(30,40,80,0.10);
+        }
+        .attack-example .attack-header {
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .attack-example .attack-mail {
+            background: #181828;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            font-size: 1rem;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+        }
+        .attack-example .attack-btn {
+            margin-top: 10px;
+        }
+        .attack-header { font-weight: 600; margin-bottom: 10px; }
+        .attack-mail .danger { color: #ff6b6b; font-weight: 600; }
+        .attack-btn { background: #7ecfff; color: #181828; border: none; border-radius: 8px; padding: 10px 18px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .attack-explanation { margin-top: 12px; color: #7ecfff; font-size: 1.05rem; min-height: 24px; }
+        .faq-list { max-width: 700px; margin: 0 auto; }
+        .faq-item { background: #23233a; border-radius: 10px; margin-bottom: 14px; }
+        .faq-question { padding: 16px 20px; cursor: pointer; font-weight: 600; }
+        .faq-answer { display: none; padding: 0 20px 16px 20px; color: #b0b0b0; }
+        .faq-item.active .faq-answer { display: block; max-width: 700px; margin: 0 auto; }
+        .faq-item.active .faq-question { color: #7ecfff; }
+        .cta-section { text-align: center; margin-top: 64px; }
+        .cta-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 18px; }
+        .cta-btn { font-size: 1.1rem; padding: 14px 36px; border-radius: 30px; background: linear-gradient(90deg, #7ecfff, #8e44ad); color: #fff; border: none; font-weight: 600; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 16px rgba(30,40,80,0.18); }
+        .cta-btn:hover { background: linear-gradient(90deg, #8e44ad, #7ecfff); }
+        @media (max-width: 900px) { .advantages-grid { flex-direction: column; gap: 18px; } .main-section .main-block { flex-direction: column; gap: 24px; padding: 28px 10px; } }
+    </style>
+</head>
+<body>
+    <div class="particles-background"></div>
+    <button class="menu-toggle">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Меню</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="team.html">Команда</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>Москва 2025</p>
+            <p>Создатель: fek2019 and lapyxxx</p>
+        </div>
+    </div>
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section fade-in">
+            <div class="hero-title">Киберполигон</div>
+            <div class="hero-messages">
+                <div class="hero-message active">Проект посвящён обучению базовым принципам и методам защиты информации</div>
+                <div class="hero-message">Погрузись в мир кибербезопасности и научись защищать себя и своих близких в цифровом мире</div>
+                <div class="hero-message">Пройди путь от новичка до эксперта — начни прямо сейчас!</div>
+            </div>
+            <button class="hero-btn" onclick="window.location.href='about.html'">Узнать больше</button>
+        </section>
+        <!-- Оригинальный текст и структура -->
+        <section class="main-section fade-in">
+            <div class="main-block">
+                <div class="main-text">
+                    <h2>Киберполигон — это</h2>
+                    <p>Проект охватывает ключевые аспекты цифровой безопасности, включая:</p>
+                    <ul>
+                        <li>Правила безопасности в интернете</li>
+                        <li>Методы защиты от кибератак</li>
+                        <li>Создание осознанности у пользователей</li>
+                        <li>Практические примеры уязвимостей</li>
+                        <li>Способы защиты персональных данных</li>
+                    </ul>
+                </div>
+                <div class="main-img">
+                    <img src="images/i (2).WEBP" alt="Концепция безопасности">
+                </div>
+            </div>
+        </section>
+        <!-- Quiz Section -->
+        <section class="quiz-section fade-in">
+            <div class="section-title">Проверь свою цифровую грамотность</div>
+            <div class="quiz-box">
+                <div class="quiz-question" id="quiz-question">Насколько надёжен ваш пароль?</div>
+                <div class="quiz-answers" id="quiz-answers">
+                    <button>123456</button>
+                    <button>qwerty2024</button>
+                    <button>!QwErTy#2024!</button>
+                </div>
+                <div class="quiz-result" id="quiz-result"></div>
+            </div>
+        </section>
+        <!-- Attack Example Section -->
+        <section class="attack-section fade-in">
+            <div class="section-title">Интерактив: найдите угрозу</div>
+            <div class="attack-example">
+                <div class="attack-header">Вам пришло письмо:</div>
+                <div class="attack-mail" id="attack-mail">
+                    <div><b>От:</b> support@paypa1.com</div>
+                    <div><b>Тема:</b> Ваша учётная запись заблокирована!</div>
+                    <div>Уважаемый пользователь, для восстановления доступа <span class="danger" id="phishing-link" style="cursor:pointer; text-decoration:underline;">перейдите по ссылке</span> и подтвердите свои данные.</div>
+                </div>
+                <button class="attack-btn" id="attack-explain-btn">Показать объяснение</button>
+                <div class="attack-explanation" id="attack-explanation"></div>
+            </div>
+        </section>
+        <!-- FAQ Section -->
+        <section class="faq-section fade-in">
+            <div class="section-title">Часто задаваемые вопросы</div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Что делать, если меня взломали?</div>
+                    <div class="faq-answer">Сразу смените пароли, проверьте устройства на вирусы, предупредите знакомых и обратитесь в службу поддержки.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Какой пароль считается надёжным?</div>
+                    <div class="faq-answer">Длинный (от 12 символов), с буквами разного регистра, цифрами и спецсимволами. Не используйте личные данные.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли полностью защититься от киберугроз?</div>
+                    <div class="faq-answer">Полностью — нет, но можно значительно снизить риски, соблюдая базовые правила безопасности.</div>
+                </div>
+            </div>
+        </section>
+        <!-- Call to Action Section -->
+        <section class="cta-section fade-in">
+            <div class="cta-title">Готовы начать свой путь в кибербезопасности?</div>
+            <button class="cta-btn" onclick="window.location.href='about.html'">Стартовать!</button>
+        </section>
+        <footer class="main-footer">
+            <p>Москва 2025</p>
+            <p>Создатель: fek2019 and lapyxxx</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    <script>
+    // Hero messages typing effect
+    const heroMessages = [
+        'Наш проект посвящён обучению базовым принципам и методам защиты информации',
+        'Погрузись в мир кибербезопасности и научись защищать себя и своих близких в цифровом мире',
+        'Пройди путь от новичка до эксперта — начни прямо сейчас!'
+    ];
+    const heroMsgContainer = document.querySelector('.hero-messages');
+    let heroMsgIndex = 0;
+    let heroCharIndex = 0;
+    let typingTimeout;
+    let isDeleting = false;
+
+    function typeHeroMessage() {
+        const currentMsg = heroMessages[heroMsgIndex];
+        const displayText = currentMsg.slice(0, heroCharIndex);
+        let msgEl = heroMsgContainer.querySelector('.hero-message');
+        if (!msgEl) {
+            msgEl = document.createElement('div');
+            msgEl.className = 'hero-message active';
+            heroMsgContainer.appendChild(msgEl);
+        }
+        msgEl.textContent = displayText;
+        msgEl.classList.add('active');
+        // Печатаем
+        if (!isDeleting && heroCharIndex < currentMsg.length) {
+            heroCharIndex++;
+            typingTimeout = setTimeout(typeHeroMessage, 38);
+        } else if (!isDeleting && heroCharIndex === currentMsg.length) {
+            // Пауза на полном сообщении
+            setTimeout(() => { isDeleting = true; typeHeroMessage(); }, 1600);
+        } else if (isDeleting && heroCharIndex > 0) {
+            heroCharIndex--;
+            typingTimeout = setTimeout(typeHeroMessage, 18);
+        } else if (isDeleting && heroCharIndex === 0) {
+            // Следующее сообщение
+            isDeleting = false;
+            heroMsgIndex = (heroMsgIndex + 1) % heroMessages.length;
+            setTimeout(typeHeroMessage, 400);
+        }
+    }
+    // Очищаем все hero-message кроме одной
+    heroMsgContainer.innerHTML = '<div class="hero-message active"></div>';
+    typeHeroMessage();
+    // Квиз
+    const quizAnswers = document.getElementById('quiz-answers');
+    const quizResult = document.getElementById('quiz-result');
+    quizAnswers.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON') {
+            if (e.target.textContent === '!QwErTy#2024!') {
+                quizResult.textContent = 'Отлично! Такой пароль сложно подобрать.';
+                quizResult.style.color = '#7ecfff';
+            } else {
+                quizResult.textContent = 'Этот пароль легко взломать. Попробуйте что-то сложнее!';
+                quizResult.style.color = '#ff6b6b';
+            }
+        }
+    });
+    // Интерактивный пример атаки
+    document.getElementById('phishing-link').addEventListener('click', function() {
+        document.getElementById('attack-explanation').textContent = 'Это фишинговая ссылка! В адресе подменён домен (paypa1 вместо paypal). Никогда не переходите по подозрительным ссылкам.';
+    });
+    document.getElementById('attack-explain-btn').addEventListener('click', function() {
+        document.getElementById('attack-explanation').textContent = 'В письме есть признаки фишинга: тревожная тема, подозрительный адрес отправителя, просьба перейти по ссылке и ввести данные.';
+    });
+    // FAQ аккордеон
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', function() {
+            const item = this.parentNode;
+            item.classList.toggle('active');
+        });
+    });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Журнал проекта | Киберполигон</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background: #181828; color: #f0f0f0; margin: 0; line-height: 1.7; text-align: center; }
+        .container { max-width: 950px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        .page-title { text-align: center; margin-bottom: 2.25em; position: relative; }
+        .page-title:after { content: ""; display: block; width: 80px; height: 3px; background: linear-gradient(90deg, #7ecfff, #8e44ad); margin: 0.5em auto 0; }
+        .page-title h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1.5em; }
+        .timeline {
+            position: relative;
+            margin: 56px auto 0 auto;
+            max-width: 1000px;
+            padding-left: 64px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 36px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #7ecfff 0%, #1abc9c 100%);
+            border-radius: 2px;
+            z-index: 0;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 56px;
+            display: flex;
+            align-items: flex-start;
+            min-height: 120px;
+            animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #7ecfff, #8e44ad);
+            border-radius: 50%;
+            box-shadow: 0 2px 12px rgba(126,207,255,0.18);
+            border: 4px solid #181828;
+            z-index: 2;
+        }
+        .timeline-label {
+            display: inline-block;
+            background: #27e18c;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.08rem;
+            border-radius: 8px;
+            padding: 6px 22px;
+            margin-bottom: 14px;
+            margin-left: 24px;
+            box-shadow: 0 2px 8px rgba(30,40,80,0.10);
+            letter-spacing: 0.5px;
+        }
+        .timeline-card {
+            background: #23233a;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(30,40,80,0.18);
+            padding: 40px 56px 36px 56px;
+            margin-left: 48px;
+            color: #f0f0f0;
+            min-width: 0;
+            max-width: 800px;
+            flex: 1;
+            text-align: left;
+            font-size: 1.18rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-card h3 {
+            margin: 0 0 18px 0;
+            font-size: 1.35rem;
+            color: #7ecfff;
+            font-weight: 700;
+        }
+        .timeline-card ul {
+            margin: 0 0 0 18px;
+            padding: 0;
+        }
+        .timeline-card li {
+            margin-bottom: 12px;
+        }
+        @media (max-width: 1100px) {
+            .timeline { max-width: 98vw; padding-left: 10px; }
+            .timeline-card { padding: 18px 10px 16px 16px; margin-left: 38px; max-width: 98vw; }
+            .timeline-label { margin-left: 10px; }
+            .timeline-dot { left: -2px; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-background"></div>
+    <button class="menu-toggle">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header"><h2>Меню</h2></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="team.html">Команда</a></li>
+                <li><a href="blog.html" class="active">Журнал</a></li>
+                <li><a href="resources.html">Ресурсы</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer"><p>Москва 2025</p><p>Создатель: fek2019 and lapyxxx</p></div>
+    </div>
+    <div class="main-content">
+        <section class="page-title">
+            <h1 class="gradient-text">Журнал этапов проекта</h1>
+        </section>
+        <div class="timeline fade-in">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div style="flex:1;">
+                    <div class="timeline-label">Февраль 2025</div>
+                    <div class="timeline-card">
+                        <h3>Начало проекта</h3>
+                        <div>На этом этапе происходило обсуждение целей проекта, определение команды и постановка задач. Было решено, какие технологии будут использоваться.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div style="flex:1;">
+                    <div class="timeline-label">Март 2025</div>
+                    <div class="timeline-card">
+                        <h3>Разработка</h3>
+                        <div>Началась активная фаза разработки сайта. Были созданы структура страниц, реализованы основные функции, написан основной код приложения.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div style="flex:1;">
+                    <div class="timeline-label">Апрель 2025</div>
+                    <div class="timeline-card">
+                        <h3>Тестирование</h3>
+                        <div>Прошло активное тестирование сайта, исправление найденных ошибок и доработка функционала. Проведены внутренние демонстрации проекта.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div style="flex:1;">
+                    <div class="timeline-label">Первая половина мая 2025</div>
+                    <div class="timeline-card">
+                        <h3>Подготовка документации</h3>
+                        <ul>
+                            <li>Техническое описание системы</li>
+                            <li>Руководство пользователя</li>
+                            <li>Презентационные материалы</li>
+                            <li>Отчёт о проделанной работе</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div style="flex:1;">
+                    <div class="timeline-label">Начало июня 2025</div>
+                    <div class="timeline-card">
+                        <h3>Защита проекта</h3>
+                        <div>Успешная защита проекта перед комиссией. Демонстрация всех функций системы, ответы на вопросы, получение обратной связи. Проект получил высокую оценку за практическую значимость и качество реализации.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <p>Москва 2025</p>
+        <p>Создатель: fek2019 and lapyxxx</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 

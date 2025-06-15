@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ресурсы | Киберполигон</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', Arial, sans-serif; background: #181828; color: #f0f0f0; margin: 0; line-height: 1.7; text-align: center; }
+        .container { max-width: 950px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        .page-title { text-align: center; margin-bottom: 2.25em; position: relative; }
+        .page-title:after { content: ""; display: block; width: 80px; height: 3px; background: linear-gradient(90deg, #7ecfff, #8e44ad); margin: 0.5em auto 0; }
+        .page-title h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1.5em; }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 36px;
+            margin: 48px auto 0 auto;
+            max-width: 900px;
+            padding: 0 16px;
+        }
+        .resource-card {
+            background: #23233a;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(30,40,80,0.18);
+            padding: 32px 28px 28px 28px;
+            color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.25s, box-shadow 0.25s;
+            position: relative;
+            text-align: center;
+        }
+        .resource-card:hover {
+            transform: translateY(-8px) scale(1.025);
+            box-shadow: 0 16px 48px rgba(126,207,255,0.18);
+        }
+        .resource-icon {
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+            color: #7ecfff;
+        }
+        .resource-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #7ecfff;
+            text-align: center;
+        }
+        .resource-desc {
+            color: #aaa;
+            font-size: 1.08rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .resource-link {
+            display: inline-block;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #7ecfff, #8e44ad);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.25s, box-shadow 0.25s;
+            box-shadow: 0 2px 12px rgba(30,40,80,0.10);
+        }
+        .resource-link:hover {
+            background: linear-gradient(135deg, #8e44ad, #7ecfff);
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(126,207,255,0.18);
+        }
+        .page-title h1, .main-content h1, .main-content h2 {
+            text-align: center !important;
+        }
+        @media (max-width: 700px) {
+            .resources-grid { grid-template-columns: 1fr; gap: 18px; }
+            .resource-card { padding: 18px 10px 16px 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-background"></div>
+    <button class="menu-toggle">☰</button>
+    <div class="sidebar">
+        <div class="sidebar-header"><h2>Меню</h2></div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О проекте</a></li>
+                <li><a href="team.html">Команда</a></li>
+                <li><a href="blog.html">Журнал</a></li>
+                <li><a href="resources.html" class="active">Ресурсы</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer"><p>Москва 2025</p><p>Создатель: fek2019 and lapyxxx</p></div>
+    </div>
+    <div class="main-content">
+        <section class="page-title">
+            <h1 class="gradient-text">Полезные ресурсы</h1>
+        </section>
+        <div class="resources-grid fade-in">
+            <div class="resource-card">
+                <div class="resource-icon">📚</div>
+                <div class="resource-title">Московский Политех</div>
+                <div class="resource-desc">Официальный сайт университета</div>
+                <a class="resource-link" href="https://mospolytech.ru" target="_blank">Перейти →</a>
+            </div>
+            <div class="resource-card">
+                <div style="width:80px;height:80px;background:#29304a;border-radius:12px;box-shadow:0 2px 12px rgba(126,207,255,0.10);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+                    <img src="images/imya-im-legion-samye-gromkie-akcii-Anonymous.png" alt="Anonymous" style="width:64px;height:64px;object-fit:contain;background:none;">
+                </div>
+                <div class="resource-title">Кибербезопасность для начинающих</div>
+                <div class="resource-desc">Бесплатный курс по основам защиты информации</div>
+                <a class="resource-link" href="https://cyberpolygon.netlify.app/" target="_blank">Перейти →</a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">🛡️</div>
+                <div class="resource-title">Кибербезопасность это просто</div>
+                <div class="resource-desc">Кибербезопасность простыми словами</div>
+                <a class="resource-link" href="https://skyeng.ru/it-industry/it/kiberbezopasnost-prostymi-slovami-dlya-nachinayuschikh/" target="_blank">Читать статью →</a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">🔗</div>
+                <div class="resource-title">Кибербезопасность от А до Я</div>
+                <div class="resource-desc">Блог о современных методах кибербезопасности от Softline</div>
+                <a class="resource-link" href="https://softline.ru/about/blog/kiberbezopasnost-ot-a-do-ya" target="_blank">Читать статью →</a>
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <p>Москва 2025</p>
+        <p>Создатель: fek2019 and lapyxxx</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 
