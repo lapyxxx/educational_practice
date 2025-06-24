@@ -133,5 +133,6 @@
 
  ## Запуск сайта
 ```bash
-   start NewCyberSite/index.html
+   cd WebSite_Cuberpoligon
+   start index.html
 ```
